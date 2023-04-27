@@ -19,6 +19,47 @@
       <button id="quarry">Quarry (Cost: 15 stone)</button>
     </div>
   </div>
+  
   <script src="game.js"></script>
 </body>
 </html>
+#game-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#resources, #collection-methods {
+  width: 45%;
+}
+
+#collection-methods button {
+  margin: 10px 0;
+}
+
+#collection-methods button:disabled {
+  opacity: 0.5;
+}
+
+// Define variables for resources and collection methods
+let goldCount = 0;
+let woodCount = 0;
+let stoneCount = 0;
+let goldMineCost = 10;
+let lumberMillCost = 5;
+let quarryCost = 15;
+
+// Set up timer to add resources every few seconds
+setInterval(function() {
+  goldCount++;
+  woodCount++;
+  stoneCount++;
+  updateResources();
+}, 3000);
+
+// Create functions for collection methods
+function collect
+
+
