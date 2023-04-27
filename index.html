@@ -2,85 +2,92 @@
 <html>
 <head>
   <title>Resource Collecting Game</title>
+</head>
+<body>
+  <h1>Resource Collecting Game</h1>
   
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #F2F2F2;
-      margin: 0;
-      padding: 0;
+  <p>Gold: <span id="gold-count">0</span></p>
+  <p>Wood: <span id="wood-count">0</span></p>
+  <p>Stone: <span id="stone-count">0</span></p>
+  
+  <button id="gold-button">Collect Gold</button>
+  <button id="wood-button">Collect Wood</button>
+  <button id="stone-button">Collect Stone</button>
+  
+  <button id="save-button">Save Progress</button>
+  <button id="load-button">Load Progress</button>
+  
+  <audio id="click-sound" src="click.mp3"></audio>
+  
+  <script>
+    // Define variables for resources
+    let goldCount = 0;
+    let woodCount = 0;
+    let stoneCount = 0;
+    
+    // Set up click events for resource collection buttons
+    document.getElementById('gold-button').addEventListener('click', function() {
+      goldCount++;
+      updateResources();
+      playClickSound();
+    });
+    
+    document.getElementById('wood-button').addEventListener('click', function() {
+      woodCount++;
+      updateResources();
+      playClickSound();
+    });
+    
+    document.getElementById('stone-button').addEventListener('click', function() {
+      stoneCount++;
+      updateResources();
+      playClickSound();
+    });
+    
+    // Set up click events for save/load buttons
+    document.getElementById('save-button').addEventListener('click', function() {
+      saveProgress();
+    });
+    
+    document.getElementById('load-button').addEventListener('click', function() {
+      loadProgress();
+    });
+    
+    // Update resource counts in the game interface
+    function updateResources() {
+      document.getElementById('gold-count').innerText = goldCount;
+      document.getElementById('wood-count').innerText = woodCount;
+      document.getElementById('stone-count').innerText = stoneCount;
     }
     
-    h1 {
-      text-align: center;
-      margin-top: 40px;
-      margin-bottom: 30px;
-      font-size: 48px;
-      color: #555;
-      text-shadow: 2px 2px #EFEFEF;
+    // Play a clicking sound
+    function playClickSound() {
+      const clickSound = document.getElementById('click-sound');
+      clickSound.currentTime = 0;
+      clickSound.play();
     }
     
-    p {
-      font-size: 24px;
-      color: #555;
-      margin: 20px 0;
+    // Save progress to local storage
+    function saveProgress() {
+      localStorage.setItem('goldCount', goldCount);
+      localStorage.setItem('woodCount', woodCount);
+      localStorage.setItem('stoneCount', stoneCount);
+      alert('Progress saved!');
     }
     
-    span {
-      font-weight: bold;
-      color: #333;
+    // Load progress from local storage
+    function loadProgress() {
+      goldCount = parseInt(localStorage.getItem('goldCount')) || 0;
+      woodCount = parseInt(localStorage.getItem('woodCount')) || 0;
+      stoneCount = parseInt(localStorage.getItem('stoneCount')) || 0;
+      updateResources();
+      alert('Progress loaded!');
     }
     
-    button {
-      background-color: #EEE;
-      color: #555;
-      border: none;
-      padding: 10px 20px;
-      font-size: 20px;
-      border-radius: 5px;
-      box-shadow: 2px 2px #DDD;
-      cursor: pointer;
-      transition: background-color 0.2s, box-shadow 0.2s;
-    }
-    
-    button:hover {
-      background-color: #DDD;
-      box-shadow: 2px 2px #CCC;
-    }
-    
-    button:active {
-      background-color: #CCC;
-      box-shadow: none;
-    }
-    
-    #gold-button {
-      background-color: #F1C40F;
-      color: #FFF;
-      margin-right: 20px;
-    }
-    
-    #wood-button {
-      background-color: #8E44AD;
-      color: #FFF;
-      margin-right: 20px;
-    }
-    
-    #stone-button {
-      background-color: #2ECC71;
-      color: #FFF;
-    }
-    
-    #save-button, #load-button {
-      margin-left: 20px;
-    }
-    
-    #click-sound {
-      display: none;
-    }
-    
-    #game-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #FFF;
-     
+    // Load progress on page load
+    window.onload = function() {
+      loadProgress();
+    };
+  </script>
+</body>
+</html>
