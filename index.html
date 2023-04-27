@@ -1,24 +1,47 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Resource Collecting Game</title>
-  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>Resource Collecting Game</h1>
-  <div id="game-container">
-    <div id="resources">
-      <h2>Resources</h2>
-      <p>Gold: <span id="gold-count">0</span></p>
-      <p>Wood: <span id="wood-count">0</span></p>
-      <p>Stone: <span id="stone-count">0</span></p>
-    </div>
-    <div id="collection-methods">
-      <h2>Collection Methods</h2>
-      <button id="gold-mine">Gold Mine (Cost: 10 gold)</button>
-      <button id="lumber-mill">Lumber Mill (Cost: 5 wood)</button>
-      <button id="quarry">Quarry (Cost: 15 stone)</button>
-    </div>
-  </div>
-  <script src="game.js"></script>
+  
+  <p>Gold: <span id="gold-count">0</span></p>
+  <p>Wood: <span id="wood-count">0</span></p>
+  <p>Stone: <span id="stone-count">0</span></p>
+  
+  <button id="gold-button">Collect Gold</button>
+  <button id="wood-button">Collect Wood</button>
+  <button id="stone-button">Collect Stone</button>
+  
+  <script>
+    // Define variables for resources
+    let goldCount = 0;
+    let woodCount = 0;
+    let stoneCount = 0;
+    
+    // Set up click events for resource collection buttons
+    document.getElementById('gold-button').addEventListener('click', function() {
+      goldCount++;
+      updateResources();
+    });
+    
+    document.getElementById('wood-button').addEventListener('click', function() {
+      woodCount++;
+      updateResources();
+    });
+    
+    document.getElementById('stone-button').addEventListener('click', function() {
+      stoneCount++;
+      updateResources();
+    });
+    
+    // Update resource counts in the game interface
+    function updateResources() {
+      document.getElementById('gold-count').innerText = goldCount;
+      document.getElementById('wood-count').innerText = woodCount;
+      document.getElementById('stone-count').innerText = stoneCount;
+    }
+  </script>
 </body>
 </html>
