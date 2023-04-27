@@ -1,0 +1,21 @@
+
+#game-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#resources, #collection-methods {
+  width: 45%;
+}
+
+#collection-methods button {
+  margin: 10px 0;
+}
+
+#collection-methods button:disabled {
+  opacity: 0.5;
+}
+          
