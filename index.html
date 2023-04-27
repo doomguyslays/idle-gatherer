@@ -2,92 +2,20 @@
 <html>
 <head>
   <title>Resource Collecting Game</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>Resource Collecting Game</h1>
-  
-  <p>Gold: <span id="gold-count">0</span></p>
-  <p>Wood: <span id="wood-count">0</span></p>
-  <p>Stone: <span id="stone-count">0</span></p>
-  
-  <button id="gold-button">Collect Gold</button>
-  <button id="wood-button">Collect Wood</button>
-  <button id="stone-button">Collect Stone</button>
-  
-  <button id="save-button">Save Progress</button>
-  <button id="load-button">Load Progress</button>
-  
-  <audio id="click-sound" src="click.mp3"></audio>
-  
-  <script>
-    // Define variables for resources
-    let goldCount = 0;
-    let woodCount = 0;
-    let stoneCount = 0;
-    
-    // Set up click events for resource collection buttons
-    document.getElementById('gold-button').addEventListener('click', function() {
-      goldCount++;
-      updateResources();
-      playClickSound();
-    });
-    
-    document.getElementById('wood-button').addEventListener('click', function() {
-      woodCount++;
-      updateResources();
-      playClickSound();
-    });
-    
-    document.getElementById('stone-button').addEventListener('click', function() {
-      stoneCount++;
-      updateResources();
-      playClickSound();
-    });
-    
-    // Set up click events for save/load buttons
-    document.getElementById('save-button').addEventListener('click', function() {
-      saveProgress();
-    });
-    
-    document.getElementById('load-button').addEventListener('click', function() {
-      loadProgress();
-    });
-    
-    // Update resource counts in the game interface
-    function updateResources() {
-      document.getElementById('gold-count').innerText = goldCount;
-      document.getElementById('wood-count').innerText = woodCount;
-      document.getElementById('stone-count').innerText = stoneCount;
-    }
-    
-    // Play a clicking sound
-    function playClickSound() {
-      const clickSound = document.getElementById('click-sound');
-      clickSound.currentTime = 0;
-      clickSound.play();
-    }
-    
-    // Save progress to local storage
-    function saveProgress() {
-      localStorage.setItem('goldCount', goldCount);
-      localStorage.setItem('woodCount', woodCount);
-      localStorage.setItem('stoneCount', stoneCount);
-      alert('Progress saved!');
-    }
-    
-    // Load progress from local storage
-    function loadProgress() {
-      goldCount = parseInt(localStorage.getItem('goldCount')) || 0;
-      woodCount = parseInt(localStorage.getItem('woodCount')) || 0;
-      stoneCount = parseInt(localStorage.getItem('stoneCount')) || 0;
-      updateResources();
-      alert('Progress loaded!');
-    }
-    
-    // Load progress on page load
-    window.onload = function() {
-      loadProgress();
-    };
-  </script>
+  <div id="resource-container">
+    <p>You have <span id="gold-count">0</span> gold, <span id="wood-count">0</span> wood, and <span id="stone-count">0</span> stone.</p>
+    <button id="gold-button">Click for Gold</button>
+    <button id="wood-button">Click for Wood</button>
+    <button id="stone-button">Click for Stone</button>
+  </div>
+  <audio id="click-sound" src="click.wav"></audio>
+  <button id="save-button">Save Game</button>
+  <button id="load-button">Load Game</button>
+
+  <script src="script.js"></script>
 </body>
 </html>
