@@ -1,30 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Idle Resource Clicker</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+  <title>Idle Resource Gathering Game</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-	<div id="container">
-		<h1>Idle Resource Clicker</h1>
-		<div id="resource">
-			<h2>Resource:</h2>
-			<p id="resourceCount">0</p>
-		</div>
-		<button id="clickButton">Click!</button>
-		<div id="upgrades">
-			<h2>Upgrades:</h2>
-			<button id="upgrade1">Upgrade 1 - Cost: 10</button>
-			<button id="upgrade2">Upgrade 2 - Cost: 20</button>
-			<button id="upgrade3">Upgrade 3 - Cost: 50</button>
-		</div>
-		<div id="autoClicker">
-			<h2>Auto Clicker:</h2>
-			<button id="buyAutoClicker">Buy Auto Clicker - Cost: 100</button>
-			<p>Auto clicker level: <span id="autoClickerLevel">0</span></p>
-			<p>Auto clicker speed: <span id="autoClickerSpeed">0</span> clicks per second</p>
-		</div>
-	</div>
-	<script src="script.js"></script>
+  <h1>Idle Resource Gathering Game</h1>
+  <div id="resource-container">
+    <p>You have <span id="gold-count">0</span> gold, <span id="wood-count">0</span> wood, and <span id="stone-count">0</span> stone.</p>
+    <button id="gold-button">Click for Gold</button>
+    <button id="wood-button">Click for Wood</button>
+    <button id="stone-button">Click for Stone</button>
+  </div>
+  <audio id="click-sound" src="click.wav"></audio>
+  <button id="save-button">Save Game</button>
+  <button id="load-button">Load Game</button>
+
+  <script src="script.js"></script>
 </body>
 </html>
