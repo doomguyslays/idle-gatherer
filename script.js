@@ -1,71 +1,34 @@
-let goldCount = 0;
-let woodCount = 0;
-let stoneCount = 0;
+// Variables to track resource count, upgrade costs, and auto clicker settings
+var resourceCount = 0;
+var upgrade1Cost = 10;
+var upgrade2Cost = 20;
+var upgrade3Cost = 50;
+var autoClickerCost = 100;
+var autoClickerLevel = 0;
+var autoClickerSpeed = 0;
 
-const goldButton = document.getElementById('gold-button');
-const woodButton = document.getElementById('wood-button');
-const stoneButton = document.getElementById('stone-button');
-
-const goldCountSpan = document.getElementById('gold-count');
-const woodCountSpan = document.getElementById('wood-count');
-const stoneCountSpan = document.getElementById('stone-count');
-
-const clickSound = document.getElementById('click-sound');
-
-const saveButton = document.getElementById('save-button');
-const loadButton = document.getElementById('load-button');
-
-const autoClickerInterval = 1000; // 1 second
-let autoClickerEnabled = false;
-
-function addGold() {
-  goldCount++;
-  goldCountSpan.innerText = goldCount;
-  playClickSound();
+// Function to update the resource count on the page
+function updateResourceCount() {
+	document.getElementById("resourceCount").innerHTML = resourceCount;
 }
 
-function addWood() {
-  woodCount++;
-  woodCountSpan.innerText = woodCount;
-  playClickSound();
+// Function to handle clicking the button
+function handleClick() {
+	resourceCount++;
+	updateResourceCount();
 }
 
-function addStone() {
-  stoneCount++;
-  stoneCountSpan.innerText = stoneCount;
-  playClickSound();
+// Functions to handle purchasing upgrades
+function purchaseUpgrade1() {
+	if (resourceCount >= upgrade1Cost) {
+		resourceCount -= upgrade1Cost;
+		upgrade1Cost *= 2;
+		updateResourceCount();
+		document.getElementById("upgrade1").innerHTML = "Upgrade 1 - Cost: " + upgrade1Cost;
+	}
 }
 
-function playClickSound() {
-  clickSound.currentTime = 0;
-  clickSound.play();
-}
-
-function saveGame() {
-  const gameData = {
-    goldCount,
-    woodCount,
-    stoneCount
-  };
-  localStorage.setItem('resourceGameSaveData', JSON.stringify(gameData));
-}
-
-function loadGame() {
-  const savedData = localStorage.getItem('resourceGameSaveData');
-  if (savedData) {
-    const gameData = JSON.parse(savedData);
-    goldCount = gameData.goldCount;
-    woodCount = gameData.woodCount;
-    stoneCount = gameData.stoneCount;
-    updateResourceCounts();
-  }
-}
-
-function updateResourceCounts() {
-  goldCountSpan.innerText = goldCount;
-  woodCountSpan.innerText = woodCount;
-  stoneCountSpan.innerText = stoneCount;
-}
-
-goldButton.addEventListener('click', addGold);
-wood
+function purchaseUpgrade2() {
+	if (resourceCount >= upgrade2Cost) {
+		resourceCount -= upgrade2Cost;
+		upgrade2Cost *= 2;
